@@ -41,4 +41,19 @@ class PlaceController extends Base_controller{
         $data['page']='statistique.php';
         $this->load->view('template',$data);
     }
+
+    public function modifieretat()
+    {
+        $id=$_GET['id'];
+        $this->PlaceModel->updateEtat($id);
+        redirect('PlaceController','refresh'); 
+
+    }
+
+    public function finirinfra()
+    {
+        $id=$_GET['id'];
+        $this->PlaceModel->finirinfra($id);
+        redirect('PlaceController','refresh');
+    }
 }

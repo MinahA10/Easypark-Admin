@@ -89,7 +89,8 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Lieu</th>
-                                                        <th>Reference</th>    
+                                                        <th>Reference</th> 
+                                                        <th>Modifier Etat</th>   
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -99,6 +100,15 @@
                                                             <td scope="row"><?php echo $places[$i]['id'];?></td>
                                                             <td scope="row"><?php echo $places[$i]['lieu'];?></td>
                                                             <td scope="row"><?php echo $places[$i]['reference'];?></td>
+                                                            <?php if($places[$i]['etat']=='En infraction'){?>
+                                                            <td scope="row"><button type="button" class="btn btn-warning">
+                                                                <a href="<?php echo site_url("PlaceController/finirinfra?id=".$places[$i]['id']);?>">Retirer Infraction</a></button>
+                                                            </td>
+                                                            <?php }else{?>
+                                                                <td scope="row"><button type="button" class="btn btn-info">
+                                                                <a href="<?php echo site_url("PlaceController/modifieretat?id=".$places[$i]['id']);?>">En infraction</a></button>
+                                                            </td>
+                                                            <?php }?>
                                                         </tr>
                                                     <?php }?>                
                                                 </tbody>

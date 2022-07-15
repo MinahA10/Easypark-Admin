@@ -41,7 +41,8 @@ create table detailportefeuille(
 create table place(
     id int primary key auto_increment,
     lieu varchar(150),
-    reference varchar(150)
+    reference varchar(150),
+    etat varchar(50) default 'Libres'
 );
 
 create table tarif(
@@ -51,11 +52,16 @@ create table tarif(
     prix decimal(10,2)
 );
 
-create table amende(
+/*create table amende(
     id int primary key auto_increment,
     prix_amende decimal(10,2),
     minimum time,
     maximum time
+);*/
+
+create table amende(
+    id int primary key auto_increment,
+    prix_amende decimal(10,2)
 );
 
 create table parking(
@@ -79,8 +85,7 @@ create table parkingamende(
     idparking int,
     duree decimal(10,2),
     prix decimal(10,2),
-    foreign key (idparking) references parking(id)
-   
+    foreign key (idparking) references parking(id)   
 );
 
 
@@ -94,7 +99,10 @@ create table paiement(
 
 ALTER TABLE place ADD CONSTRAINT uc_place UNIQUE (reference);
 ALTER TABLE tarif ADD CONSTRAINT uc_tarif UNIQUE (tarif);
-ALTER TABLE place ADD COLUMN etat TinyInt(1) DEFAULT 0;
+ALTER TABLE place MODIFY etat varchar(50) default "Libres"; 
+
+UPDATE place SET etat="Occupe" where etat="1"; 
+  
 
 -------------------VIEW----------------------
 create or replace view _portefeuille as
@@ -114,7 +122,12 @@ create or replace view _utilisation as
 
     select parking.*,client.nom,client.prenom 
         from parking parking
-            join 
+            join client client
+
+            select p.*,NULLIF(t.tarif,'NULL'),t.temp,t.prix 
+                from parking p
+                 right join tarif t
+                 on p.idtarif=t.id;
 -------------------Donnee----------------
 insert into admin (nom,prenom,mail,mdp) values ('Rakoto','Hery','rakotohery@gmail.com',sha1('123456'));
 
@@ -123,6 +136,8 @@ insert into client (nom,prenom,mail,mdp) values ('Minah','client','minahclient@g
 insert into portefeuille (idclient,montant) values (1,100);
 
 insert into detailportefeuille (idclient,inserer) values (5,2000);
+
+insert into amende (prix_amende) values (10000);
 
 
 

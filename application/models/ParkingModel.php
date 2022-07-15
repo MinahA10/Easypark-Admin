@@ -8,7 +8,7 @@ class ParkingModel extends CI_Model {
     public function liste(){
         $this->db->select('*');
         $this->db->from('_placeparking');
-        $this->db->where('etat',1);
+        $this->db->where('etat','Occupe');
         $query = $this->db->get();
         $res= $query->result_array();
         return $res;
