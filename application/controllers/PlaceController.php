@@ -16,7 +16,6 @@ class PlaceController extends Base_controller{
     public function ajouter(){
         
         $this->form_validation->set_rules('lieu', 'Lieu', 'required|max_length[50]');
-        $this->form_validation->set_rules('reference', 'Reference', 'required|max_length[10]');
         
         if($this->form_validation->run()== FALSE)
         {
@@ -26,12 +25,9 @@ class PlaceController extends Base_controller{
         else
         {
             $place['lieu']=$this->input->post('lieu');
-            $place['reference']=$this->input->post('reference');
             $this->PlaceModel->ajoutPlace($place);
             
-            $data['titre']='Place | EasyPark';
-            $data['page']='place.php';
-            $this->load->view('template',$data);
+            redirect('PlaceController','refresh');
         }
     }
 
@@ -42,18 +38,4 @@ class PlaceController extends Base_controller{
         $this->load->view('template',$data);
     }
 
-    public function modifieretat()
-    {
-        $id=$_GET['id'];
-        $this->PlaceModel->updateEtat($id);
-        redirect('PlaceController','refresh'); 
-
-    }
-
-    public function finirinfra()
-    {
-        $id=$_GET['id'];
-        $this->PlaceModel->finirinfra($id);
-        redirect('PlaceController','refresh');
-    }
 }

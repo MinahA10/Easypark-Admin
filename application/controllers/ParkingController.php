@@ -7,9 +7,9 @@ class ParkingController extends Base_Controller {
 
 	public function index()
 	{
-        $data['parkings']=$this->ParkingModel->liste();
-        $data['titre']='Etat Parking | EasyPark';
-        $data['page']='parking.php';
-        $this->load->view('template',$data);
+                $data['parkings']=$this->ParkingModel->liste();
+                $data['titre']='Etat Parking | EasyPark';
+                $data['page']='parking.php';
+                $this->load->view('template',$data);
 	}
 }

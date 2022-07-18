@@ -23,7 +23,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Historique Place Parking</h4>
+                            <h4 class="card-title">Liste Parking Non libre</h4>
                             <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                             <div class="heading-elements">
                                 <ul class="list-inline mb-0">
@@ -50,20 +50,20 @@
                                         </thead>
                                         <tbody>
                                         <?php for($i=0;$i<count($parkings);$i++) {
-                                            $reste = $parkings[$i]['temp'] - $parkings[$i]['diff'];
-                                            if($reste<0){
+                                           
+                                            if($parkings[$i]['etat']=='Libre'){
                                                 $couleur="btn btn-warning btn-min-width mr-1 mb-1";
                                             }else{
                                                 $couleur="btn btn-primary btn-min-width mr-1 mb-1";
                                             }
                                         ?>
                                             <tr>
-                                                <td scope="row"><?php echo $parkings[$i]['reference']?></td>
+                                                <td scope="row"><?php echo $parkings[$i]['id']?></td>
                                                 <td scope="row"><?php echo $parkings[$i]['voiture']?></td>
-                                                <td scope="row"><?php echo $parkings[$i]['debut']?></td>
-                                                <td scope="row"><?php echo $parkings[$i]['temp']?></td>
+                                                <td scope="row"><?php echo $parkings[$i]['debutarrive']?></td>
+                                                <td scope="row"><?php echo $parkings[$i]['sommeduree']?></td>
                                                 <td scope="row"><?php echo $parkings[$i]['etat']?></td>
-                                                <td scope="row"> <button type="button" class="<?php echo $couleur;?>"><?php echo $reste;?></button></td>
+                                                <td scope="row"> <button type="button" class="<?php echo $couleur;?>"></button></td>
                                             </tr>
                                         <?php }?>
                                         </tbody>

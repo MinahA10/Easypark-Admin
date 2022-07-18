@@ -50,10 +50,6 @@
                                                 <fieldset class="form-group">
                                                     <input type="text" class="form-control" id="basicInput"  name="lieu" required>
                                                 </fieldset>
-                                                <h5 class="mt-2">Reference:</h5>
-                                                <fieldset class="form-group">
-                                                    <input type="text" class="form-control" id="basicInput"  name="reference" required>
-                                                </fieldset>
                                                 <fieldset class="form-group">
                                                 <input type="submit"  class="btn btn-info" id="basicInput"  value="Inserer">
                                                 </fieldset>
@@ -89,26 +85,29 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Lieu</th>
-                                                        <th>Reference</th> 
-                                                        <th>Modifier Etat</th>   
+                                                        <th>Etat</th> 
+                                                         
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php for($i=0;$i<count($places);$i++) {
+                                                    <?php for($i=0;$i<count($places);$i++) 
+                                                    {
+                                                        switch ($places[$i]['etat']){
+                                                            case 'Libre':
+                                                                $color="btn btn-primary btn-min-width mr-1 mb-1";
+                                                                break;
+                                                            case 'Occupe':
+                                                                $color="btn btn-success btn-min-width mr-1 mb-1";
+                                                                break;
+                                                            case 'En infraction':
+                                                                $color="btn btn-warning btn-min-width mr-1 mb-1";
+                                                                break;
+                                                        }
                                                         ?>
                                                         <tr>
                                                             <td scope="row"><?php echo $places[$i]['id'];?></td>
                                                             <td scope="row"><?php echo $places[$i]['lieu'];?></td>
-                                                            <td scope="row"><?php echo $places[$i]['reference'];?></td>
-                                                            <?php if($places[$i]['etat']=='En infraction'){?>
-                                                            <td scope="row"><button type="button" class="btn btn-warning">
-                                                                <a href="<?php echo site_url("PlaceController/finirinfra?id=".$places[$i]['id']);?>">Retirer Infraction</a></button>
-                                                            </td>
-                                                            <?php }else{?>
-                                                                <td scope="row"><button type="button" class="btn btn-info">
-                                                                <a href="<?php echo site_url("PlaceController/modifieretat?id=".$places[$i]['id']);?>">En infraction</a></button>
-                                                            </td>
-                                                            <?php }?>
+                                                            <td scope="row"><button class="<?php echo $color;?>"><?php echo $places[$i]['etat'];?></button></td>      
                                                         </tr>
                                                     <?php }?>                
                                                 </tbody>

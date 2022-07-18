@@ -21,6 +21,7 @@ class Base_controller extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('UserModel');
+		$this->load->model('DatyModel');
 		$this->load->model('PlaceModel');
 		$this->load->model('ParkingModel');
 		$this->load->model('PorteFeuilleModel');

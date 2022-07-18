@@ -17,7 +17,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		legendText: "",
 		dataPoints: [
       <?php foreach($placeStat as $stat  )    {?>
-			{ y: <?php echo $stat['effectif']?>, label: " <?php echo $stat['reference']?>" },
+			{ y: <?php echo $stat['effectif']?>, label: " <?php echo $stat['id']?>" },
       <?php }?>
 		]
 	}]

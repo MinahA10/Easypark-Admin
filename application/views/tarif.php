@@ -51,9 +51,9 @@
                                 <fieldset class="form-group">
                                     <input type="text" class="form-control" id="basicInput"  name="tarif" required>
                                 </fieldset>
-                                <h5 class="mt-2">Duree en minute:</h5>
+                                <h5 class="mt-2">Duree:</h5>
                                 <fieldset class="form-group">
-                                    <input type="number" class="form-control" id="basicInput"  name="duree" required>
+                                    <input type="text" class="form-control" id="basicInput"  name="duree" required>
                                 </fieldset>
                                 <h5 class="mt-2">Prix:</h5>
                                 <fieldset class="form-group">

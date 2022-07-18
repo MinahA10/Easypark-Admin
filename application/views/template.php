@@ -60,6 +60,7 @@
         </div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class=" nav-item"><a href="<?php echo base_url('DatyController')?>" ><i class="ft-home"></i><span class="menu-title" data-i18n="">Gestion DateHeure</span></a></li>
                 <li class=" nav-item"><a href="<?php echo base_url('PlaceController')?>" ><i class="ft-home"></i><span class="menu-title" data-i18n="">Gestion Place</span></a></li>
                 <li class=" nav-item"><a href="<?php echo base_url('ParkingController')?>" ><i class="ft-book"></i><span class="menu-title" data-i18n="">Parking</span></a></li>
                 <li class=" nav-item"><a href="<?php echo base_url('PorteFeuilleController')?>" ><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Porte Feuille</span></a></li>
